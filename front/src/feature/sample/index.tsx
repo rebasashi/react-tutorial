@@ -1,11 +1,10 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react'
+import { NameType } from './types'
+import { formatName } from './utils'
 
 export const Sample: React.FC = () => {
-  const formatName = (user: { firstName: string; lastName: string }) => {
-    return user.firstName + ' ' + user.lastName
-  }
-  const user = {
+  const user: NameType = {
     firstName: 'Harper',
     lastName: 'Perez'
   }
