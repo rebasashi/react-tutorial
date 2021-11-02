@@ -1,19 +1,28 @@
 // eslint-disable-next-line no-use-before-define
-import React, { SyntheticEvent } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@material-ui/core'
 
-// イベントハンドラ関数
-const buttonHandler = (e: SyntheticEvent) => {
-  // Reactでイベントハンドラ引数を用いる場合SyntheticEventインスタンスが渡される
-  // 参考：https://ja.reactjs.org/docs/events.html
-  // 不要であれば引数eを付けなくても良いと思われる
-  console.log(e)
+const isEven = (value: number) => {
+  return (value % 2 === 0)
 }
 
 export const Sample: React.FC = () => {
+  // 条件付きレンダー実現用にuseStateを利用する
+  // React.useState
+  // https://ja.reactjs.org/docs/hooks-overview.html
+  const [count, setCount] = useState(0)
+
+  // イベントハンドラ関数
+  const buttonHandler = () => {
+    setCount(count + 1)
+  }
+
   return (
     <div>
-      <Button color="primary" onClick={buttonHandler}>Hello World</Button>
+      <p>count: {count}</p>
+      {/** 条件付きレンダー */}
+      <p>{isEven(count) ? '偶数' : '奇数'}</p>
+      <Button color="primary" onClick={buttonHandler}>Button</Button>
     </div>
   )
 }
