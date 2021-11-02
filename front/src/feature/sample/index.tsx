@@ -6,13 +6,13 @@ const Welcome = (props: { name: string }) => {
   return <h1>Hello, {props.name}</h1>
 }
 
-// 小文字で始まるコンポーネントはDOMタグとして扱われる
-const element = <Welcome name="Sara" />
-
 export const Sample: React.FC = () => {
+  // コンポーネントを組み合わせる
   return (
     <div>
-      {element}
+      <Welcome name="Sara" />
+      <Welcome name="Cahal" />
+      <Welcome name="Edite" />
     </div>
   )
 }
